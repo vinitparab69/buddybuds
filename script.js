@@ -31,63 +31,75 @@ mobileMenuLinks.forEach(link => {
     });
 });
 
-// Color selection functionality
-const colorOptions = document.querySelectorAll('.color-option');
-const showcaseProduct = document.getElementById('showcaseProduct');
-const orderNowBtn = document.querySelector('.btn-primary');
+const heroColorOptions = document.querySelectorAll('.hero .color-option');
+const galleryColorOptions = document.querySelectorAll('#gallery .color-option');
 
-let selectedColor = 'Midnight Black'; // default color name mapping
+function syncColorSelection(selectedKey) {
+    // Remove active from all hero and gallery options
+    heroColorOptions.forEach(opt => opt.classList.remove('active'));
+    galleryColorOptions.forEach(opt => opt.classList.remove('active'));
 
-const colorNameMap = {
-    black: 'Midnight Black',
-    white: 'Pearl White',
-    blue: 'Ocean Blue',
-    rose: 'Rose Gold'
-};
+    // Add active to selected in both hero and gallery
+    heroColorOptions.forEach(opt => {
+        if (opt.dataset.color === selectedKey) opt.classList.add('active');
+    });
+    galleryColorOptions.forEach(opt => {
+        if (opt.dataset.color === selectedKey) opt.classList.add('active');
+    });
+}
 
-colorOptions.forEach(option => {
+function updateOrderNowButton(colorKey) {
+    selectedColor = colorNameMap[colorKey] || colorKey;
+    if (orderNowBtn) {
+        orderNowBtn.textContent = `Order Now - $199 (${selectedColor})`;
+        orderNowBtn.dataset.productName = `SoundWave Pro - Premium Edition (${selectedColor})`;
+        // Add SVG icon back to button
+        const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgIcon.setAttribute("width", "20");
+        svgIcon.setAttribute("height", "20");
+        svgIcon.setAttribute("viewBox", "0 0 24 24");
+        svgIcon.setAttribute("fill", "none");
+        svgIcon.setAttribute("stroke", "currentColor");
+        svgIcon.setAttribute("stroke-width", "2");
+        const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path1.setAttribute("d", "M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z");
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", "3");
+        line.setAttribute("y1", "6");
+        line.setAttribute("x2", "21");
+        line.setAttribute("y2", "6");
+        const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path2.setAttribute("d", "m16 10-4 4-4-4");
+        svgIcon.appendChild(path1);
+        svgIcon.appendChild(line);
+        svgIcon.appendChild(path2);
+        orderNowBtn.prepend(svgIcon);
+    }
+    showcaseProduct.className = `showcase-product ${colorKey}`;
+    selectedColorKey = colorKey;
+}
+
+let selectedColorKey = 'black'; // default selected color key
+
+heroColorOptions.forEach(option => {
     option.addEventListener('click', () => {
-        // Remove active class from all options
-        colorOptions.forEach(opt => opt.classList.remove('active'));
-        
-        // Add active class to clicked option
-        option.classList.add('active');
-        
-        // Get selected color
-        const selectedColorKey = option.dataset.color;
-        selectedColor = colorNameMap[selectedColorKey] || selectedColorKey;
-        
-        // Update showcase product color
-        showcaseProduct.className = `showcase-product ${selectedColorKey}`;
-        
-        // Update Order Now button text and data attribute
-        if (orderNowBtn) {
-            orderNowBtn.textContent = `Order Now - $199 (${selectedColor})`;
-            orderNowBtn.dataset.productName = `SoundWave Pro - Premium Edition (${selectedColor})`;
-            // Add SVG icon back to button
-            const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            svgIcon.setAttribute("width", "20");
-            svgIcon.setAttribute("height", "20");
-            svgIcon.setAttribute("viewBox", "0 0 24 24");
-            svgIcon.setAttribute("fill", "none");
-            svgIcon.setAttribute("stroke", "currentColor");
-            svgIcon.setAttribute("stroke-width", "2");
-            const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path1.setAttribute("d", "M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z");
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute("x1", "3");
-            line.setAttribute("y1", "6");
-            line.setAttribute("x2", "21");
-            line.setAttribute("y2", "6");
-            const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path2.setAttribute("d", "m16 10-4 4-4-4");
-            svgIcon.appendChild(path1);
-            svgIcon.appendChild(line);
-            svgIcon.appendChild(path2);
-            orderNowBtn.prepend(svgIcon);
-        }
+        const key = option.dataset.color;
+        syncColorSelection(key);
+        updateOrderNowButton(key);
     });
 });
+
+galleryColorOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        const key = option.dataset.color;
+        syncColorSelection(key);
+        updateOrderNowButton(key);
+    });
+});
+
+// Initialize with default selection
+syncColorSelection(selectedColorKey);
+updateOrderNowButton(selectedColorKey);
 
 // Smooth scrolling for navigation links
 const navLinks = document.querySelectorAll('a[href^="#"]');
