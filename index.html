@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundWave - Premium Wireless Earbuds</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Cart sidebar styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+            transition: right 0.3s ease;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.open {
+            right: 0;
+        }
+        .cart-header {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h3 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .cart-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .cart-item-name {
+            font-weight: 600;
+        }
+        .cart-item-qty {
+            color: #555;
+        }
+        .cart-empty {
+            text-align: center;
+            color: #888;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">SoundWave</div>
+                
+                <nav class="nav-desktop">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#specs">Specs</a>
+                    <a href="#pricing">Pricing</a>
+                </nav>
+
+                <div class="nav-actions" style="position: relative;">
+                    <button class="cart-btn" aria-label="Open cart" style="position: relative;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="m16 10-4 4-4-4"/>
+                        </svg>
+                        <span class="cart-count-badge" style="background:#10b981;color:#fff;border-radius:50%;padding:2px 6px;font-size:0.75rem;position:absolute;top:5px;right:5px;display:none;">0</span>
+                    </button>
+                    <button class="mobile-menu-btn">
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#specs">Specs</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" aria-label="Shopping cart" role="region">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="cart-close-btn" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <p class="cart-empty">Your cart is empty.</p>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Experience<br>
+                    <span class="gradient-text">Pure Sound</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Revolutionary wireless earbuds with studio-quality sound, 
+                    all-day comfort, and seamless connectivity.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="m16 10-4 4-4-4"/>
+                        </svg>
+                        Order Now - $199
+                    </button>
+                    <button class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,3 19,12 5,21 5,3"/>
+                        </svg>
+                        Watch Demo
+                    </button>
+                </div>
+
+                <div class="hero-product">
+                    <div class="product-glow"></div>
+                    <div class="product-showcase">
+                        <div class="product-case">
+                            <div class="product-inner">
+                                <div class="product-logo">SW</div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-label">SoundWave Pro</div>
+                            <div class="product-edition">Premium Edition</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Engineered for Excellence</h2>
+                <p>Every detail has been carefully crafted to deliver the ultimate audio experience</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="m19.07 4.93-1.41 1.41A8.5 8.5 0 0 1 19.07 19.07l1.41 1.41A10.5 10.5 0 0 0 19.07 4.93z"/>
+                            <path d="m15.54 8.46-1.41 1.41a4 4 0 0 1 0 4.24l1.41 1.41a6 6 0 0 0 0-7.06z"/>
+                        </svg>
+                    </div>
+                    <h3>Premium Sound Quality</h3>
+                    <p>Custom-tuned drivers deliver rich, detailed audio with deep bass and crystal-clear highs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="6" width="18" height="10" rx="2" ry="2"/>
+                            <line x1="22" y1="12" x2="23" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>30-Hour Battery Life</h3>
+                    <p>8 hours per charge plus 22 hours with the case. Quick charge gives 2 hours in just 15 minutes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6.5 6.5C6.5 5.5 7 3 12 3s5.5 2.5 5.5 3.5-1 1.5-1 1.5-1.5 1.5-1.5 2.5c0 .5 0 1.5 0 1.5s-2 1-4 1-4-1-4-1 0-1 0-1.5c0-1 -1.5-2.5-1.5-2.5S6.5 7.5 6.5 6.5z"/>
+                            <path d="M12 19v3"/>
+                            <path d="M9 22h6"/>
+                        </svg>
+                    </div>
+                    <h3>Seamless Connectivity</h3>
+                    <p>Bluetooth 5.3 ensures stable connection with instant pairing and automatic device switching.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon teal">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>IPX7 Water Resistant</h3>
+                    <p>Sweat and rain resistant design perfect for workouts and outdoor activities.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon orange">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>Active Noise Cancellation</h3>
+                    <p>Advanced ANC technology blocks out distractions for immersive listening experience.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon pink">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Ergonomic Comfort</h3>
+                    <p>Lightweight design with multiple ear tip sizes ensures perfect fit for all-day comfort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Style</h2>
+                <p>Available in four stunning colors to match your personal style</p>
+            </div>
+
+            <div class="gallery-content">
+                <div class="gallery-showcase">
+                    <div class="showcase-bg">
+                        <div class="showcase-glow"></div>
+                        <div class="showcase-product" id="showcaseProduct">
+                            <div class="showcase-inner">
+                                <div class="earbud-pair">
+                                    <div class="earbud"></div>
+                                    <div class="earbud"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <div class="info-section">
+                        <h3>Premium Materials</h3>
+                        <p>Crafted with premium materials including aircraft-grade aluminum and soft-touch silicone for durability and comfort that lasts.</p>
+                    </div>
+
+                    <div class="color-selection">
+                        <h4>Available Colors</h4>
+                        <div class="color-options">
+                            <button class="color-option active" data-color="black">
+                                <div class="color-swatch black"></div>
+                                <span>Midnight Black</span>
+                            </button>
+                            <button class="color-option" data-color="white">
+                                <div class="color-swatch white"></div>
+                                <span>Pearl White</span>
+                            </button>
+                            <button class="color-option" data-color="blue">
+                                <div class="color-swatch blue"></div>
+                                <span>Ocean Blue</span>
+                            </button>
+                            <button class="color-option" data-color="rose">
+                                <div class="color-swatch rose"></div>
+                                <span>Rose Gold</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-stats">
+                        <div class="stat">
+                            <div class="stat-value">12g</div>
+                            <div class="stat-label">Per Earbud</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">IPX7</div>
+                            <div class="stat-label">Water Resistant</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section id="specs" class="specs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Specifications</h2>
+                <p>Engineered with cutting-edge technology for superior performance</p>
+            </div>
+
+            <div class="specs-content">
+                <div class="specs-details">
+                    <h3>Detailed Specs</h3>
+                    <div class="specs-categories">
+                        <div class="spec-category">
+                            <h4>Audio</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span>Driver Size</span>
+                                    <span>11mm Dynamic Drivers</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Frequency Response</span>
+                                    <span>20Hz - 20kHz</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Impedance</span>
+                                    <span>32Ω</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>THD</span>
+                                    <span>&lt;0.1%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-category">
+                            <h4>Battery & Charging</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span>Earbud Battery</span>
+                                    <span>8 Hours</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Case Battery</span>
+                                    <span>22 Hours</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Total Playtime</span>
+                                    <span>30 Hours</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Quick Charge</span>
+                                    <span>15min = 2hrs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-category">
+                            <h4>Connectivity</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span>Bluetooth Version</span>
+                                    <span>5.3</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Range</span>
+                                    <span>10m / 33ft</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Codecs</span>
+                                    <span>AAC, SBC, aptX</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Multipoint</span>
+                                    <span>Yes (2 devices)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-category">
+                            <h4>Design & Build</h4>
+                            <div class="spec-list">
+                                <div class="spec-item">
+                                    <span>Weight (each)</span>
+                                    <span>12g</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Water Resistance</span>
+                                    <span>IPX7</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Case Dimensions</span>
+                                    <span>65 × 45 × 25mm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Materials</span>
+                                    <span>Aluminum, Silicone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="specs-features">
+                    <h3>Key Features</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Active Noise Cancellation</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Transparency Mode</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Touch Controls</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Voice Assistant Support</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Auto Play/Pause</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Find My Earbuds</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Wireless Charging Case</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="check-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                            </div>
+                            <span>Fast Pair Technology</span>
+                        </div>
+                    </div>
+
+                    <div class="whats-in-box">
+                        <h4>What's in the Box</h4>
+                        <ul>
+                            <li>• SoundWave Pro Earbuds</li>
+                            <li>• Wireless Charging Case</li>
+                            <li>• USB-C Charging Cable</li>
+                            <li>• 3 Pairs of Silicone Ear Tips (S, M, L)</li>
+                            <li>• Quick Start Guide</li>
+                            <li>• Warranty Card</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Premium Audio, Fair Price</h2>
+                <p>Experience professional-grade audio without the premium price tag</p>
+            </div>
+
+            <div class="pricing-content">
+                <div class="pricing-card">
+                    <div class="offer-badge">LIMITED TIME OFFER</div>
+                    <div class="price-display">
+                        <span class="old-price">$299</span>
+                        <span class="current-price">$199</span>
+                    </div>
+                    <p class="savings">Save $100 on your first order</p>
+
+                    <div class="benefits">
+                        <div class="benefit">
+                            <div class="benefit-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <polygon points="16,8 20,8 23,11 23,16 20,16 20,13 16,13"/>
+                                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                            </div>
+                            <span>Free shipping worldwide</span>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 4v6h6"/>
+                                    <path d="M23 20v-6h-6"/>
+                                    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                                </svg>
+                            </div>
+                            <span>30-day money back guarantee</span>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <span>2-year warranty included</span>
+                        </div>
+                    </div>
+
+                    <button class="order-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="m16 10-4 4-4-4"/>
+                        </svg>
+                        Order Now - Free Shipping
+                    </button>
+                </div>
+
+                <div class="testimonials">
+                    <h3>What Our Customers Say</h3>
+                    <div class="testimonial-list">
+                        <div class="testimonial">
+                            <div class="stars">
+                                <span>★★★★★</span>
+                            </div>
+                            <p>"Best earbuds I've ever owned. The sound quality is incredible and they're so comfortable!"</p>
+                            <div class="author">Sarah Johnson</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="stars">
+                                <span>★★★★★</span>
+                            </div>
+                            <p>"Amazing battery life and the noise cancellation works perfectly. Worth every penny."</p>
+                            <div class="author">Mike Chen</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="stars">
+                                <span>★★★★★</span>
+                            </div>
+                            <p>"Love the design and build quality. They stay in my ears during workouts and sound amazing."</p>
+                            <div class="author">Emma Davis</div>
+                        </div>
+                    </div>
+
+                    <div class="stock-notice">
+                        <div class="stock-indicator">
+                            <div class="stock-dot"></div>
+                            <span class="stock-text">In Stock</span>
+                        </div>
+                        <p>Order within the next 24 hours to get free express shipping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">SoundWave</div>
+                    <p>Revolutionizing audio with premium wireless earbuds designed for the modern lifestyle.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#specs">Specifications</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>support@soundwave.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SoundWave. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
