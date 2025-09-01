@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://buddybuds.vercel.app/sitemap.xml
